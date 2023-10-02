@@ -15,7 +15,7 @@ class ContactsModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['results'] = results.map((v) => v.toJson()).toList();
-      return data;
+    return data;
   }
 }
 
@@ -28,14 +28,14 @@ class Results {
   String createdAt = "";
   String updatedAt = "";
 
-  Results(
-      this.objectId,
-      this.nome,
-      this.foto,
-      this.telefone,
-      this.email,
-      this.createdAt,
-      this.updatedAt);
+  Results(this.objectId, this.nome, this.foto, this.telefone, this.email,
+      this.createdAt, this.updatedAt);
+
+  Results.criar(
+    this.nome,
+    this.telefone,
+    this.email,
+  );
 
   Results.fromJson(Map<String, dynamic> json) {
     objectId = json['objectId'];
@@ -56,6 +56,15 @@ class Results {
     data['email'] = email;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
+    return data;
+  }
+
+  Map<String, dynamic> toJsonEndpoint() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nome'] = nome;
+    data['foto'] = foto;
+    data['telefone'] = telefone;
+    data['email'] = email;
     return data;
   }
 }
